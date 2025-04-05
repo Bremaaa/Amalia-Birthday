@@ -3,89 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Surprise untuk Amalia Rivana</title>
+  <title>Kejutan untuk Amalia</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
+  <audio id="bg-music" loop>
+    <source src="bg-music.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="container animate__animated animate__fadeInDown">
     <h1>🎉 Hai Amalia! 🎉</h1>
-    <p>Sebelum kamu buka pesannya, ayo main minigame kecil dulu~</p>
-    <div id="game">
-      <p>Klik tombol yang muncul! Tapi jangan salah ya, cuma satu yang benar!</p>
-      <div id="buttons"></div>
+    <p>Kamu harus jawab 3 pertanyaan dulu ya biar bisa buka pesannya!</p>
+
+    <button onclick="startGame()">Mainkan 🎮</button>
+    
+    <div id="quiz-container" class="hidden animate__animated animate__fadeInUp">
+      <div id="question-box">
+        <p id="question"></p>
+        <div id="options"></div>
+      </div>
     </div>
-    <div id="message" class="hidden">
+
+    <div id="message" class="hidden animate__animated animate__heartBeat">
       <h2>🎁 Untuk Amalia Rivana 🎁</h2>
-      <p>Semoga panjang umur, rezekinya lancar kayak Shopee COD, urusannya dimudahkan, dan semua wishlist-nya (termasuk jodoh) segera tercapai!</p>
-      <p>Cepetan dapet jodoh ya, biar nggak tarik-ulur terus sama yang cuma penasaran doang. Kita udah gede, bukan main layangan!</p>
+      <p>Semoga panjang umur, rezekinya lancar kayak Shopee COD, urusannya dimudahkan, dan semua wishlist-nya segera tercapai!</p>
+      <p>Cepetan dapet jodoh ya, biar nggak tarik-ulur terus sama yang cuma penasaran doang. Kamu itu manusia, bukan layangan!</p>
       <p>Tetap jadi pendengar setia buat temen-temenmu, walau kadang ceritanya itu-itu aja. Hehe.</p>
       <p>Dan jangan lupa jadi manusia super sabar yang tahan banting kayak charger HP yang udah ditekuk-tekuk tapi masih nyala!</p>
       <p>Skripsinya semoga lancar, biar nggak jadi "kisah horror semester akhir". Amin!</p>
-      <p>Dan tolong... kurangin halu sama Haechan woi! Wkwkwk 😂</p>
-      <p>Maaf ya kalau aku nggak bisa ngetik sepanjang skripsi, tapi makasih udah jadi teman kuliah dari akhir semester satu sampai sekarang. Kamu keren!</p>
+      <p>Dan tolong... kurangin halu sama Haechan  Wkwkwk 😂</p>
+      <p>Maaf ya kalau aku nggak bisa ngetik sepanjang skripsi, tapi makasih udah jadi teman kuliah dari akhir semester satu sampai sekarang. Kamu hebat cebol</p>
       <p><strong>Dan yang paling penting:</strong> JANGAN LUPA SAMA AKU —teman baik, rajin menabung, suka menolong, nggak sombong, dan jelas-jelas <strong>limited edition</strong> 😎</p>
     </div>
   </div>
 
   <script src="script.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 </body>
 </html>
-body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #ffecec;
-  color: #333;
-  text-align: center;
-  padding: 20px;
-}
-
-.container {
-  max-width: 700px;
-  margin: auto;
-  background-color: #fff6f6;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 0 10px rgba(255, 128, 128, 0.3);
-}
-
-button {
-  padding: 10px 20px;
-  margin: 10px;
-  font-size: 16px;
-  border: none;
-  background-color: #ff6b81;
-  color: white;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: #e74c3c;
-}
-
-.hidden {
-  display: none;
-}
-const buttonsContainer = document.getElementById("buttons");
-const messageBox = document.getElementById("message");
-
-function createButtons() {
-  const correctIndex = Math.floor(Math.random() * 5);
-  buttonsContainer.innerHTML = "";
-
-  for (let i = 0; i < 5; i++) {
-    const btn = document.createElement("button");
-    btn.textContent = `Tombol ${i + 1}`;
-    btn.onclick = () => {
-      if (i === correctIndex) {
-        document.getElementById("game").classList.add("hidden");
-        messageBox.classList.remove("hidden");
-      } else {
-        alert("Ups, bukan yang ini. Coba lagi!");
-      }
-    };
-    buttonsContainer.appendChild(btn);
-  }
-}
-
-createButtons();
